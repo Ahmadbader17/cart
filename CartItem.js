@@ -1,23 +1,31 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-  constructor () {
-    super();
-    this.state = {
-      price: 999,
-      title: 'Mobile Phone',
-      qty: 1,
-      img: ''
-    }
-    // this.increaseQuantity = this.increaseQuantity.bind(this);
-  }
+  // testing () {
+  //   const promise = new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve('done');
+  //     }, 5000);
+  //   })
+
+  //   promise.then(() => {
+  //     // setState acts like a synchronus call
+  //     this.setState({ qty: this.state.qty + 10 });
+
+  //     this.setState({ qty: this.state.qty + 10 });
+
+  //     this.setState({ qty: this.state.qty + 10 });
+
+  //     console.log('state', this.state);
+  //   });
+  // }
   increaseQuantity = () => {
     // this.state.qty += 1;
     // console.log('this', this.state);
     // setState form 1
     // this.setState({
     //   qty: this.state.qty + 1
-    // });
+    // }, () => {});
 
     // setState form 2 - if prevState required use this
     this.setState((prevState) => {
@@ -28,23 +36,24 @@ class CartItem extends React.Component {
   }
 
   decreaseQuantity = () => {
-    const {qty} = this.state;
+    const { qty } = this.state;
 
-    if(qty===0){
+    if (qty === 0) {
       return;
     }
-
+    // setState form 2 - if prevState required use this
     this.setState((prevState) => {
       return {
         qty: prevState.qty - 1
       }
     });
   }
-
   render () {
-    const { price, title, qty } = this.state;
+    console.log('this.props', this.props);
+    const { price, title, qty } = this.props.product;
     return (
       <div className="cart-item">
+        {this.props.jsx}
         <div className="left-block">
           <img style={styles.image} />
         </div>
